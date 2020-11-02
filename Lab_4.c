@@ -15,9 +15,9 @@ void check (char* string, int start_word, int end_word) {
 		for (i = start_word; i <= end_word; i++) {
 			printf("%c", string[i]);
 		}
-		printf("%c\n", ' ');
+		printf("%c\n", '|');
 	}
-
+	printf("count: %d", count);
 }
 
 int main () {
@@ -29,10 +29,9 @@ int main () {
 		string[i] = a;
 		i++;
 	}
-	
 	i = 0;
 	int start_word = 0, end_word = 0, first_word = 1;
-	
+
 	while (string[i] != 0) {
 		if (string[i] != ' ') {
 			if (first_word == 1) {
@@ -44,11 +43,12 @@ int main () {
 			if (string[i] == ' ') {
 				end_word = i - 1;
 				first_word = 1;
-				check(string, start_word, end_word);
+				check (string, start_word, end_word);
 				start_word = i + 1;
+				i++;
 			}
 		}
-	} 	
+	}
 		
 	return 0;
 }
