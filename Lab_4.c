@@ -11,13 +11,12 @@ void check (char* string, int start_word, int end_word) {
 			}
 		}
 	}
-	if (count == 0) {
+	if (count > 0) {
 		for (i = start_word; i <= end_word; i++) {
 			printf("%c", string[i]);
 		}
 		printf("%c\n", '|');
 	}
-	printf("count: %d", count);
 }
 
 int main () {
@@ -40,7 +39,7 @@ int main () {
 			}
 			i++;			
 		} else {
-			if (string[i] == ' ') {
+			if ((string[i] == ' ') || (string[i + 1] == 0)) {
 				end_word = i - 1;
 				first_word = 1;
 				check (string, start_word, end_word);
