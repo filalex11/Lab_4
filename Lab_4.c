@@ -20,10 +20,9 @@ void check (char* string, int start_word, int end_word) {
 }
 
 int main () {
-	int len = 0, a = 0, i = 0;
-	printf("Input length of string:");
-	scanf("%d\n", &len);
-	char string[len];
+	int a = 0, i = 0;
+	printf("Input string:");
+	char string[100];
 	while ((a = getchar()) != '\n') {
 		string[i] = a;
 		i++;
