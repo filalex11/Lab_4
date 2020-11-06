@@ -36,9 +36,13 @@ int main () {
 				start_word = i;
 				first_word = 0;
 			}
-			i++;			
+			if (string[i + 1] == 0) {
+				end_word = i;
+				check (string, start_word, end_word);
+			}
+			i++;
 		} else {
-			if ((string[i] == ' ') || (string[i + 1] == 0)) {
+			if (string[i] == ' ') {
 				end_word = i - 1;
 				first_word = 1;
 				check (string, start_word, end_word);
@@ -46,7 +50,6 @@ int main () {
 				i++;
 			}
 		}
-	}
-		
+	}		
 	return 0;
 }
