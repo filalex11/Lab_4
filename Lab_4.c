@@ -49,8 +49,7 @@ int main () {
 	int start_word = 0, end_word = 0;
 	char first_word = 'Y';
 	while (string[i] != 0) {
-		if (is_symbol(string, i) == 'N') {	
-			
+		if (is_symbol(string, i) == 'N') {
 			if (first_word == 'Y') {
 				start_word = i;
 				first_word = 'N';
