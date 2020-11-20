@@ -20,18 +20,11 @@ void check (char* string, int start_word, int end_word) {
 	}
 }
 
-char is_symbol (char* string, int i) {
-	char symbols[17] = {' ', ',', '.', ':', ';', '-', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-	int j = 0, count = 0;
-	for (j = 0; j < 17; j++) {
-		if (symbols[j] == string[i]) {
-			count++;
-		}
-	}
-	if (count != 0) {
-		return 'Y';
-	} else {
+char is_symbol (char *string, int i) {
+	if (((string[i] >= 'A') && (string[i] <= 'Z')) || ((string[i] >= 'a') && (string[i] <= 'z'))) {
 		return 'N';
+	} else {
+		return 'Y';
 	}
 }
 
@@ -39,9 +32,9 @@ int main () {
 	int a = 0, i = 0, length = 0;
 	printf("Input length of string:");
 	scanf("%d\n", &length);
-	char* string = malloc (length * sizeof(char));
+	char *string = malloc (length * sizeof(char));
 	printf("Words:\n");
-	while ((a = getchar()) != '\n') {
+	while (((a = getchar()) != '\n') && (i < length)) {
 		string[i] = a;
 		i++;
 	}
