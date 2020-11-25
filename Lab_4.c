@@ -20,16 +20,17 @@ void check (char* string, int start_word, int end_word) {
 	}
 }
 
-char is_symbol (char *string, int i) {
-	if (((string[i] >= 'A') && (string[i] <= 'Z')) || ((string[i] >= 'a') && (string[i] <= 'z'))) {
-		return 'N';
+int is_letter (char *p) {
+	char str = *p;
+	if (((str >= 'A') && (str <= 'Z')) || ((str >= 'a') && (str <= 'z'))) {
+		return 1;
 	} else {
-		return 'Y';
+		return 0;
 	}
 }
 
 int main () {
-	int a = 0, i = 0, length = 0;
+	int a = 0, length = 0, i = 0;
 	printf("Input length of string:");
 	scanf("%d\n", &length);
 	char *string = malloc (length * sizeof(char));
@@ -39,13 +40,13 @@ int main () {
 		i++;
 	}
 	i = 0;
-	int start_word = 0, end_word = 0;
-	char first_word = 'Y';
+	int start_word = 0, end_word = 0, first_word = 1;
+	
 	while (string[i] != 0) {
-		if (is_symbol(string, i) == 'N') {
-			if (first_word == 'Y') {
+		if (is_letter(&string[i]) == 1) {
+			if (first_word == 1) {
 				start_word = i;
-				first_word = 'N';
+				first_word = 0;
 			}
 			if (string[i + 1] == 0) {
 				end_word = i;
@@ -53,9 +54,9 @@ int main () {
 			}
 			i++;
 		} else {
-			if (is_symbol(string, i) == 'Y') {
+			if (is_letter(&string[i]) == 0) {
 				end_word = i - 1;
-				first_word = 'Y';
+				first_word = 1;
 				check (string, start_word, end_word);
 				start_word = i + 1;
 				i++;
