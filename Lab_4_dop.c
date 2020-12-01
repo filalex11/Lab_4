@@ -6,7 +6,7 @@
 */
 void check (char *word) {
 	int i = 0, j = 0, count = 0;
-	for (i = 0; word[i + 1] != 0; i++) {
+	for (i = 0; word[i] != 0; i++) {
 		for (j = i + 1; word[j] != 0; j++) {
 			if (word[i] == word[j]) {
 				count++;
@@ -53,6 +53,10 @@ int main () {
 	int a = 0, length = 0, i = 0, j = 0, k = 0;
 	printf("Input length of string [1;1000]:");
 	scanf("%d\n", &length);
+	if ((length < 1) || (length > 1000)) {
+		printf("ERROR\n");
+		return -1;
+	}
 	char *string = malloc (length * sizeof(char));
 	printf("Words:\n");
 	while (((a = getchar()) != '\n') && (i < length)) {
@@ -66,6 +70,7 @@ int main () {
 	while (string[k] != 0) {
 		if (is_letter(string[k]) == 1) {
 			words[i][j] = string[k];
+			words[i][j + 1] = '\0';
 			j++;
 			symbols = 0;
 		} else {
@@ -83,5 +88,6 @@ int main () {
 		check(words[i]);
 		i++;
 	}
+
 	return 0;
 }
