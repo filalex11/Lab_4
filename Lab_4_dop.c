@@ -19,7 +19,6 @@ void check (char *word) {
 		}
 		printf("%c\n", '\0');
 	}
-	
 }
 
 int is_letter (char str) {
@@ -65,7 +64,13 @@ int main () {
 	}
 	int count = word_count(string);
 	i = 0;
-	char words[count][length];
+	/*char words[count][length];*/
+	char **words;
+	words = malloc(count * sizeof(char*));
+	for (i = 0; i < count; i++) {
+		words[i] = malloc(length * sizeof(char));
+	}
+	i = 0;
 	int symbols = 0;
 	while (string[k] != 0) {
 		if (is_letter(string[k]) == 1) {
