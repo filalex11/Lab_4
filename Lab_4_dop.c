@@ -91,8 +91,8 @@ int main () {
 		check(words[i]);
 		free(words[i]);
 		i++;
-		
 	}
+	free(words);
 
 	return 0;
 }
