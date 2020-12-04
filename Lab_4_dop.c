@@ -64,18 +64,16 @@ int main () {
 	}
 	int count = word_count(string);
 	i = 0;
-	/*char words[count][length];*/
 	char **words;
-	words = malloc(count * sizeof(char*));
+	words = (char**)malloc(count * sizeof(char*));
 	for (i = 0; i < count; i++) {
-		words[i] = malloc(length * sizeof(char));
+		words[i] = (char*)malloc(length * sizeof(char));
 	}
 	i = 0;
 	int symbols = 0;
 	while (string[k] != 0) {
 		if (is_letter(string[k]) == 1) {
 			words[i][j] = string[k];
-			words[i][j + 1] = '\0';
 			j++;
 			symbols = 0;
 		} else {
@@ -91,7 +89,9 @@ int main () {
 	j = 0;
 	while (i != count) {
 		check(words[i]);
+		free(words[i]);
 		i++;
+		
 	}
 
 	return 0;
